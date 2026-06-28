@@ -1,0 +1,17 @@
+/// Shared parameters for the FinOps Hub semantic model.
+/// Sensitive values (cluster URL, enrollment number) must be configured
+/// via environment variables or Power BI Desktop parameters before publishing.
+/// See .env.example at repo root.
+
+expression 'Cluster URL (3)' = "https://${ADX_CLUSTER_ENDPOINT}" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+    lineageTag: cluster-url-3
+
+/// Lookback window for the Costs table (DirectQuery).
+/// Default: 1 month. Increase for longer historical views (impacts query performance).
+expression 'Number of Months (2)' = 1 meta [IsParameterQuery=true, Type="Numeric", IsParameterQueryRequired=true]
+    lineageTag: number-of-months-2
+
+/// Granularity for x_ReportingDate column in the Costs table.
+/// "Daily" = startofday | "Monthly" = startofmonth
+expression 'Default Granularity (2)' = "Daily" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+    lineageTag: default-granularity-2

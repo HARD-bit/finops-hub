@@ -1,0 +1,43 @@
+# ============================================================
+# FinOps Hub — .gitignore
+# ============================================================
+
+# --- Secrets & credentials ---
+.env
+*.env.local
+secrets.json
+credentials.json
+
+# --- Power BI binary files (large, not diff-friendly) ---
+*.pbix
+*.pbip
+
+# --- Power BI Desktop temp files ---
+*.pbids
+LocalSettings.json
+.pbi/
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# --- Node (if any tooling) ---
+node_modules/
+npm-debug.log
+
+# --- Editor ---
+.vscode/settings.json
+.idea/
+*.suo
+*.user
+
+# --- Azure DevOps / ADO pipeline artifacts ---
+drop/
+publish/

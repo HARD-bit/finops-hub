@@ -1,0 +1,20 @@
+/// FinOps Hub — Reservations & Savings Plans Tracker
+/// Semantic model definition.
+/// This file is generated/managed by Power BI Desktop (PBIP format).
+/// Do not edit manually unless you know what you are doing.
+///
+/// Tables defined in /tables/*.tmdl
+/// Shared parameters defined in expressions.tmdl
+///
+/// Data sources:
+///   - Azure Data Explorer (DirectQuery) — Costs table
+///   - Azure Cost Management EA — RI transactions, RI usage summary
+///   - Azure Resource Graph — VmQueryUpdate, SQL_ManagedIstances
+///   - SharePoint Online — SP - Azure VMs
+///   - Azure Blob Storage — vmquery_cbcp_automation
+///   - Public web CSV (aka.ms/isf) — isf table
+///
+/// See docs/architecture/FinOps_Architecture_Documentation.md for full reference.
+
+model ReservationsTracker
+    culture: en-US
