@@ -1,6 +1,6 @@
-# [COMPANY] FinOps Hub — Technical Architecture Documentation
+# FinOps Hub — Technical Architecture Documentation
 
-> **Version:** 1.0 | **Date:** June 2026 | **Author:** [AUTHOR] — Data Architecture Team  
+> **Version:** 1.0 | **Date:** June 2026 | **Author:** Data Architecture Team  
 > **Status:** CONFIDENTIAL — Internal Use Only
 
 ---
@@ -24,7 +24,7 @@
 
 ## 1. Executive Summary
 
-This document describes the end-to-end data flow of the [COMPANY] FinOps solution, built on the **Microsoft FinOps Toolkit (FinOps Hub)**. The solution collects Azure costs from Cost Management, processes them through Azure Data Factory, stores them in Azure Data Lake Storage Gen2 and Azure Data Explorer, and exposes them via a Power BI semantic model to the **"Reservations and Saving Plans Tracker"** report.
+This document describes the end-to-end data flow of the enterprise client's FinOps solution, built on the **Microsoft FinOps Toolkit (FinOps Hub)**. The solution collects Azure costs from Cost Management, processes them through Azure Data Factory, stores them in Azure Data Lake Storage Gen2 and Azure Data Explorer, and exposes them via a Power BI semantic model to the **"Reservations and Saving Plans Tracker"** report.
 
 **Document objectives:**
 - Document the complete architecture and data flow, layer by layer
@@ -41,7 +41,7 @@ This document describes the end-to-end data flow of the [COMPANY] FinOps solutio
 All FinOps Hub resources live within the following Azure organisational structure:
 
 ```
-Tenant ([COMPANY])
+Tenant (enterprise client)
 └── Management Group
     └── Subscription — DT Enterprise Architecture (${AZURE_SUBSCRIPTION_ID})
         └── Resource Group — ${RESOURCE_GROUP}
@@ -709,8 +709,8 @@ ResToHave = Sum_RatioDivided - SUM(RI transactions[quantity])
 
 ## 8. Layer 6 — Power BI Report
 
-**Report name:** [COMPANY] - Reservations and Saving Plans Tracker  
-**File:** `[COMPANY] - Reservations and Saving Plans Tracker.pbix`
+**Report name:** Reservations and Saving Plans Tracker  
+**File:** `Reservations and Saving Plans Tracker.pbix`
 
 | Page | # Visuals | Content |
 |---|---|---|
@@ -841,4 +841,4 @@ ResToHave = Sum_RatioDivided - SUM(RI transactions[quantity])
 
 ---
 
-*Document generated automatically — [COMPANY] Data Architecture Team — June 2026*
+*Document generated automatically — June 2026*
