@@ -1,4 +1,4 @@
-# [COMPANY] FinOps Hub — How the Data Flows
+# FinOps Hub — How the Data Flows
 
 > A plain-English walkthrough of how data moves from Azure sources to Power BI visuals.  
 > For the full technical reference (formulas, KQL queries, M code) see `FinOps_Architecture_Documentation.md` sections 7.4–7.9.
@@ -68,7 +68,6 @@ Power BI — Costs table
 After the KQL query runs, M reorders columns alphabetically and removes about 40 FOCUS columns that are not used in any visual.
 
 ---
-
 ## Path B — Operational data
 
 All other tables are loaded directly by Power BI on a scheduled refresh. No ADF pipeline is involved.
@@ -146,7 +145,6 @@ A DAX table computed at refresh time from `isf`. For each ISF group it identifie
 It also appends a hard-coded row for `SQLMI_GP_Compute_Gen5` — because SQL Managed Instances are not included in the ISF file, but the model needs a record to make the `SQL_ManagedIstances → Compa-SkuRatio` relationship work.
 
 ---
-
 ### `RI transactions` — reservation purchase history (Azure Cost Management EA)
 
 Connects to EA enrollment `${EA_BILLING_ACCOUNT_ID}` and loads the `ritransactions` table.
@@ -221,7 +219,6 @@ The same logic applies to SQL Managed Instances, using vCore count instead of IS
 `ResToHaveSQL = SUM(Cores) − SUM(RI transactions[quantity])`
 
 ---
-
 ## DAX measures — what gets displayed in visuals
 
 | Measure | Shown as | Formula in plain English |
@@ -279,4 +276,4 @@ Given this data flow, the key checks are:
 
 ---
 
-*Document generated 2026-06-23 — [COMPANY] Data Architecture Team*
+*Document generated 2026-06-23*
