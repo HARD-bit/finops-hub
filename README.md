@@ -2,6 +2,8 @@
 
 A Power BI solution for Azure cost management, built on the [Microsoft FinOps Toolkit](https://github.com/microsoft/finops-toolkit). Tracks Reserved Instance and Savings Plan coverage, utilisation, and purchasing recommendations across the Azure fleet.
 
+Built as a Data Engineer for an enterprise client to answer one recurring question the finance and infrastructure teams kept asking manually: *are we over- or under-committed on Reserved Instances, and what should we buy next?* Cost data lands in Azure Data Lake through a scheduled ADF pipeline, is normalised into the FOCUS standard and served via Azure Data Explorer, then joined in Power BI against a live Azure Resource Graph inventory and a manually-maintained SharePoint VM registry. The result is a report that turns raw billing exports into a single "buy this many, of this family, this year" recommendation — replacing a spreadsheet that used to be rebuilt by hand every month.
+
 ---
 
 ## Architecture
@@ -32,7 +34,6 @@ finops-hub/
 │   │   ├── FinOps_Architecture_Documentation.md   # Full technical reference
 │   │   └── DATA_FLOW_EXPLAINED.md                 # Plain-English data flow walkthrough
 │   └── dev/
-│       ├── DEV_WORKSPACE_SETUP.md                 # Dev workspace changelog & credential setup
 │       └── DEVOPS_WIKI.md                         # DevOps wiki (architecture summary)
 ├── semantic-model/
 │   └── ReservationsTracker.SemanticModel/         # PBIP semantic model (TMDL)
@@ -71,7 +72,7 @@ After publishing the PBIP project to a Power BI workspace, configure credentials
 | Azure Data Explorer | OAuth2 | Organizational |
 | Azure Cost Management (EA) | OAuth2 / Organizational account | Organizational |
 
-See [`docs/dev/DEV_WORKSPACE_SETUP.md`](docs/dev/DEV_WORKSPACE_SETUP.md) for full setup order and known issues.
+See [`docs/dev/DEVOPS_WIKI.md`](docs/dev/DEVOPS_WIKI.md) for the full setup order and known issues.
 
 ### 3. Required Azure roles
 
