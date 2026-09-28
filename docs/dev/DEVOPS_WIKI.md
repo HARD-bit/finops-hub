@@ -1,12 +1,12 @@
-# [COMPANY] FinOps Hub — Technical Architecture
+# FinOps Hub — Technical Architecture
 
-> **Version:** 1.0 | **Date:** June 2026 | **Author:** [AUTHOR] — Data Architecture Team
+> **Version:** 1.0 | **Date:** June 2026 | **Author:** Data Architecture Team
 
 ---
 
 ## 1. Executive Summary
 
-This document describes the end-to-end data flow of the [COMPANY] FinOps solution, built on the **Microsoft FinOps Toolkit (FinOps Hub)**. The solution collects Azure costs from Cost Management, processes them through Azure Data Factory, stores them in Azure Data Lake Storage Gen2 and Azure Data Explorer, and exposes them via a Power BI semantic model to the **"Reservations and Saving Plans Tracker"** report.
+This document describes the end-to-end data flow of the enterprise client's FinOps solution, built on the **Microsoft FinOps Toolkit (FinOps Hub)**. The solution collects Azure costs from Cost Management, processes them through Azure Data Factory, stores them in Azure Data Lake Storage Gen2 and Azure Data Explorer, and exposes them via a Power BI semantic model to the **"Reservations and Saving Plans Tracker"** report.
 
 **Document objectives:**
 - Document the complete architecture and data flow, layer by layer
@@ -197,7 +197,7 @@ All other tables are loaded directly by Power BI on a scheduled refresh — no i
 
 | **Issue**<br> | **Detail**<br> |
 | --- | --- |
-| RI tables — resolved 2026-06-24<br> | Required roles assigned by [ADMIN]: **Billing Account Reader** (Azure Portal → Cost Management + Billing → IAM) + **BENEFITS READER** + **LICENSE POSITION READER** (ea.azure.com). OAuth2 / Organizational account (${PBI_SERVICE_ACCOUNT}) now works. Note: Reservations Reader (Azure RBAC) is NOT required — connector reads via billing API, not Reservations API.<br> |
+| RI tables — resolved 2026-06-24<br> | Required roles assigned by the Azure AD administrator: **Billing Account Reader** (Azure Portal → Cost Management + Billing → IAM) + **BENEFITS READER** + **LICENSE POSITION READER** (ea.azure.com). OAuth2 / Organizational account (${PBI_SERVICE_ACCOUNT}) now works. Note: Reservations Reader (Azure RBAC) is NOT required — connector reads via billing API, not Reservations API.<br> |
 | Error 104305 ResID blank values — resolved 2026-06-24<br> | `SP - Azure VMs.ResID` column had blank values (VMs not yet linked to an Azure Resource ID) breaking the one-to-many relationship with `VmQueryTOTAL`. Fixed by adding `Table.SelectRows(#"Renamed Columns1", each [ResID] <> null and [ResID] <> "")` in Power Query M. Committed as `53c13fe`.<br> |
 | Report dev published 2026-06-24 — all sources and visuals OK<br> | Report published from project `Progetto Reservations and Saving Plans`. All 7 data sources authenticated and refreshing. All visuals rendering without errors. Next: data validation of RI tables.<br> |
 | EA connector deprecation<br> | `AzureCostManagement.Tables` no longer accepts API Key in recent Power BI Desktop — OAuth2 only<br> |
